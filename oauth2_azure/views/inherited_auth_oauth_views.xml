@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="inherited_view_oauth_provider_form" model="ir.ui.view">
+            <field name="name">inherited.auth.oauth.provider.form</field>
+            <field name="model">auth.oauth.provider</field>
+            <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form" />
+            <field name="arch" type="xml">
+                <field name="validation_endpoint" position="after">
+                    <field name="response_type" />
+                    <field name="client_secret" password="True" attrs="{'invisible': [('response_type', '!=', 'code')], 'required': [('response_type', '=', 'code')]}" />
+                </field>
+            </field>
+        </record>
+</odoo>
